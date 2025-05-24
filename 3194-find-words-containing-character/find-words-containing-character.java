@@ -1,5 +1,6 @@
 class Solution {
     public List<Integer> findWordsContaining(String[] words, char x) {
+        //length
         int n=words.length;
         List<Integer> result = new ArrayList<>();
         for(int i=0;i<n;i++){
