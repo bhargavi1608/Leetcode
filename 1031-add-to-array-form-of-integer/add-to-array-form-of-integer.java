@@ -1,6 +1,6 @@
 class Solution {
     public List<Integer> addToArrayForm(int[] num, int k) {
-        ArrayList<Integer> list = new ArrayList<>();
+        LinkedList<Integer> list = new LinkedList<>();
        int i=num.length-1;
        int carry=k;
        while(i>=0 || carry>0){
