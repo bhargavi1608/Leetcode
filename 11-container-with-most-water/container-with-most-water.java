@@ -8,12 +8,13 @@ class Solution {
             int l = Math.min(height[left],height[right]);
             int b = right-left;
             int area=l*b;
+            max = Integer.max(max,area);
             if(height[left]<height[right]){
                 left++;
             }else{
                 right--;
             }
-            max = Integer.max(max,area);
+           
         }
         return max;
 
