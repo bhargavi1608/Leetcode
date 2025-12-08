@@ -1,37 +1,16 @@
 class Solution {
-    
     public int[] searchRange(int[] nums, int target) {
-        int[] arr ={-1,-1};
-        
-        int left=0;
-        int right=nums.length-1;
-        // first occurence
-        while(left<=right){
-            int mid = left+(right-left)/2;
-            if(nums[mid]>=target){
-                right=mid-1;
-            }else{
-                left=mid+1;
-            }
-            if(nums[mid]==target){
-                arr[0]=mid;
-
+        int[] res=new int[2];
+        int s=-1;
+        int e=-1;
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]==target){
+                if(s==-1) s=i;
+                e=i;
             }
         }
-
-        //find last occurence
-        left=0;
-        right=nums.length-1;
-        while(left<=right){
-            int mid = left+(right-left)/2;
-            if(nums[mid]<=target){
-                left=mid+1;
-            }else{
-                right=mid-1;
-            }
-            if(nums[mid]==target) arr[1]=mid;
-        }
-        return arr;
-        
+        res[0]=s;
+        res[1]=e;
+        return res;
     }
 }
