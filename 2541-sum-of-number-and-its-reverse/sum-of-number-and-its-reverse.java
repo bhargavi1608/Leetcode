@@ -10,9 +10,12 @@ class Solution {
 
     }
     private int reverse(int x){
-        String s = Integer.toString(x);
-        String rev = new StringBuilder(s).reverse().toString();
-        int revnum = Integer.parseInt(rev);
-        return revnum;
+        int r=0;
+        while(x>0){
+            int d = x%10;
+            r=r*10+d;
+            x=x/10;
+        }
+        return r;
     }
 }
