@@ -1,16 +1,13 @@
 class Solution {
     public int[] finalPrices(int[] prices) {
-       int[] res = new int[prices.length];
-       for(int i=0;i<prices.length;i++){
-        for(int j=i+1;j<prices.length;j++){
-            if(prices[i]>=prices[j]){
-                res[i]=prices[i]-prices[j];
-                break;
+        int[] res = prices.clone();
+        Deque<Integer> stack = new ArrayDeque<>();
+        for(int j=0;j<prices.length;++j){
+            while(!stack.isEmpty() && prices[j]<=prices[stack.peek()]){
+                res[stack.pop()]-=prices[j];
             }
-            res[i]=prices[i];
+            stack.push(j);
         }
-       } 
-       res[prices.length-1]=prices[prices.length-1];
-       return res;
+        return res;
     }
 }
