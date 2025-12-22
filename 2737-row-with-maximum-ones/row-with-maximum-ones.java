@@ -1,7 +1,7 @@
 class Solution {
     public int[] rowAndMaximumOnes(int[][] mat) {
         int maxCount=-1;
-        int col=0;
+        int r=0;
         for(int i=0;i<mat.length;i++){
             int count=0;
             for(int j=0;j<mat[i].length;j++){
@@ -12,9 +12,9 @@ class Solution {
             }
             if(count>maxCount){
                 maxCount=count;
-                col=i;
+                r=i;
             }
         }
-        return new int[]{col,maxCount};
+        return new int[]{r,maxCount};
     }
 }
