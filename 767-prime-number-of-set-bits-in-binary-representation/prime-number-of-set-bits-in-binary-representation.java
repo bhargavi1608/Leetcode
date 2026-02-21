@@ -1,12 +1,27 @@
 class Solution {
     public int countPrimeSetBits(int left, int right) {
-        int ans =0;
-        final int mask =665772;
+        int count=0;
         for(int i=left;i<=right;i++){
-            if((mask >> Integer.bitCount(i) &1)==1){
-                ++ans;
+            String ibin = Integer.toBinaryString(i);
+            if(isPrime(ibin)){
+                count++;
             }
         }
-        return ans;
+        return count;
+    }
+    public static boolean isPrime(String num){
+     List<Integer> l = Arrays.asList(2,3,5,7,11,13,17,19);
+     int count=0;
+     for(char c: num.toCharArray()){
+        if(c=='1'){
+            count++;
+        }
+     }
+     if(l.contains(count)){
+        return true;
+     }else{
+        return false;
+     }
+     
     }
 }
