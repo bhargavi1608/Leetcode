@@ -1,24 +1,23 @@
 class Solution {
+    private static final String[] digitsToLetters = {
+        "", "", "abc", "def", "ghi", "jkl",
+        "mno", "pqrs", "tuv", "wxyz"
+    };
     public List<String> letterCombinations(String digits) {
-        if(digits.isEmpty()) return new ArrayList<>();
-        List<String> ans = new ArrayList<>();
+        if(digits.length()==0 || digits==null) return new ArrayList<>();
+        ArrayList<String> ans = new ArrayList<>();
         backtrack(digits,0,new StringBuilder(),ans);
         return ans;
     }
-
-    private static final String[] digitsToLetters = {
-        "","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"
-    };
-    private void backtrack(String digits, int i, StringBuilder sb, List<String> ans){
-        if(i==digits.length()){
+    public void backtrack(String digits,int idx,StringBuilder sb, List<String> ans){
+        if(idx==digits.length()){
             ans.add(sb.toString());
             return;
         }
-        for(final char c:digitsToLetters[digits.charAt(i)-'0'].toCharArray()){
+        for(final char c:digitsToLetters[digits.charAt(idx)-'0'].toCharArray()){
             sb.append(c);
-            backtrack(digits,i+1,sb,ans);
+            backtrack(digits,idx+1,sb,ans);
             sb.deleteCharAt(sb.length()-1);
         }
     }
-
 }
