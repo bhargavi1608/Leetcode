@@ -1,21 +1,14 @@
 class Solution {
     public int[] twoSum(int[] numbers, int target) {
-        int[] arr = new int[2];
-        int i=0;
-         int j=numbers.length-1;
-         while(i<j){
-           
-            if(numbers[i]+numbers[j]==target){
-                arr[0]=i+1;
-                arr[1]=j+1;
-                return arr;
-
-            }else if(numbers[i]+numbers[j]<target){
-                i++;
-            }else{
-                j--;
+        
+        Map<Integer,Integer> map = new HashMap<>();
+        for(int i=0;i<numbers.length;i++){
+            int complement = target-numbers[i];
+            if(map.containsKey(complement)){
+                return new int[]{map.get(complement)+1,i+1};
             }
+            map.put(numbers[i],i);
         }
-        return arr;
+        return new int[]{-1,-1};
     }
 }
