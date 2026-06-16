@@ -1,29 +1,18 @@
 class Solution {
     public String processStr(String s) {
-        Stack<Character> st = new Stack<>();
+        StringBuilder sb = new StringBuilder();
         for(char c:s.toCharArray()){
-            if(c=='*'){
-                if(!st.isEmpty()){
-                    st.pop();
+            if(Character.isLowerCase(c)){
+                sb.append(c);
+            }else if(c=='*'){
+                if(sb.length()>0){
+                    sb.deleteCharAt(sb.length()-1);
                 }
             }else if(c=='#'){
-                List<Character> list = new ArrayList<>(st);
-                for(char ch:list){
-                    st.push(ch);
-                }
-            }else if(c=='%'){
-                Stack<Character> rev = new Stack<>();
-                while(!st.isEmpty()){
-                    rev.push(st.pop());
-                }
-                st=rev;
+                sb.append(sb.toString());
             }else{
-                st.push(c);
+                sb.reverse();
             }
-        }
-        StringBuilder sb = new StringBuilder();
-        for(char c:st){
-            sb.append(c);
         }
         return sb.toString();
     }
