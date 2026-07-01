@@ -1,21 +1,18 @@
 class Solution {
     public boolean isValid(String s) {
-        List<Character> open =  Arrays.asList('(','{','[');
-        List<Character> close =  Arrays.asList(')','}',']');
         Stack<Character> st = new Stack<>();
         for(char c:s.toCharArray()){
-            if(open.contains(c)){
+            if(c=='('||c=='{'||c=='['){
                 st.push(c);
             }else{
-                if(st.isEmpty()){
-                    return false;
-                }else{
+                if(!st.isEmpty()){
                     char top = st.pop();
-                    if(c==')'&& top!='(' || c==']' && top!='[' || c=='}' && top!= '{'){
+                    if(c==')' && top!='(' || c=='}' && top!='{' || c==']' && top!='['){
                         return false;
                     }
+                }else{
+                    return false;
                 }
-                
             }
         }
         return st.isEmpty();
