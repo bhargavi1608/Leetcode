@@ -4,15 +4,16 @@ class Solution {
         for(String word:strs){
             char[] c = word.toCharArray();
             Arrays.sort(c);
-            String key = new String(c);
-            if(map.containsKey(key)){
-                map.get(key).add(word);
-            }else{
-                ArrayList<String> list = new ArrayList<>();
-                list.add(word);
-                map.put(key,list);
+            String cw = new String(c);
+            if(!map.containsKey(cw)){
+                map.put(cw,new ArrayList<>());
             }
+            map.get(cw).add(word);
         }
-        return new ArrayList<>(map.values());
+        List<List<String>> res = new ArrayList<>();
+        for(List val:map.values()){
+            res.add(val);
+        }
+        return res;
     }
 }
