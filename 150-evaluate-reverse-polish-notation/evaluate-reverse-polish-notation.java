@@ -1,30 +1,36 @@
 class Solution {
     public int evalRPN(String[] tokens) {
-        Stack<Integer> s = new Stack<>();
+        Stack<Integer> stack = new Stack<>();
         for(String token:tokens){
             if(isOperator(token)){
-                int num2 = s.pop();
-                int num1 = s.pop();
-                int result = Cal(num1,num2,token);
-                s.push(result);
+                int num2 = stack.pop();
+                int num1 = stack.pop();
+                int ans = cal(num1,num2,token);
+                stack.push(ans);
             }else{
-                s.push(Integer.parseInt(token));
+                stack.push(Integer.parseInt(token));
             }
         }
-        return s.pop();
-
+        return stack.pop();
     }
-    public static boolean isOperator(String token){
-        return "-+=/%*".contains(token);
+    public boolean isOperator(String token){
+        return token.equals("+") || token.equals("-") || token.equals("/") || token.equals("*");
     }
-    public int Cal(int a,int b,String operator){
-        switch(operator){
-            case "+": return a+b;
-            case "-": return a-b;
-            case "*": return a*b;
-            case "/": return a/b;
+    public int cal(int a,int b, String token){
+        switch(token){
+            case "+":
+                return a+b;
+                
+            case "-":
+                return a-b;
+                
+            case "*":
+                return a*b;
+                
+            case "/":
+                return a/b;
             default:
-            throw new IllegalArgumentException("Invalid");
+                return -1;
         }
     }
 }
