@@ -1,15 +1,13 @@
 class Solution {
     public boolean isIsomorphic(String s, String t) {
-        if(s.length()!=t.length()) return false;
-        List<Integer> l1 = new ArrayList<>();
-        List<Integer> l2 = new ArrayList<>();
-        for(int i=0;i<s.length();i++){
-            l1.add(s.indexOf(s.charAt(i)));
+        List<Integer> list1 = new ArrayList<>();
+        List<Integer> list2 = new ArrayList<>();
+        for(char c:s.toCharArray()){
+            list1.add(s.indexOf(c));
         }
-        for(int i=0;i<t.length();i++){
-            l2.add(t.indexOf(t.charAt(i)));
+         for(char c:t.toCharArray()){
+            list2.add(t.indexOf(c));
         }
-        return  l1.equals(l2);
-
+        return list1.equals(list2);
     }
 }
