@@ -1,15 +1,15 @@
 class Solution {
     public List<Integer> findDisappearedNumbers(int[] nums) {
-        Set<Integer> list = new HashSet<>();
+        List<Integer> list = new ArrayList<>();
+        Set<Integer> set = new HashSet<>();
         for(int num:nums){
-            list.add(num);
+            set.add(num);
         }
-        List<Integer> res = new ArrayList<>();
-        for(int i=1;i<=nums.length;i++){
-            if(!list.contains(i)){
-                res.add(i);
+        for(int i=0;i<nums.length;i++){
+            if(!set.contains(i+1)){
+                list.add(i+1);
             }
         }
-        return res;
+        return list;
     }
 }
